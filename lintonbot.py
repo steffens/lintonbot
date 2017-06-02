@@ -16,6 +16,7 @@ bot.
 
 from telegram.ext import Updater, CommandHandler, MessageHandler, Filters
 import logging
+import ConfigParser
 
 # Enable logging
 logging.basicConfig(format='%(asctime)s - %(name)s - %(levelname)s - %(message)s',
@@ -43,6 +44,11 @@ def error(bot, update, error):
 
 
 def main():
+
+	config = ConfigParser.RawConfigParser()
+	config.read('config.ini')
+	print(config.getstring('telegram', 'token'))
+
     # Create the EventHandler and pass it your bot's token.
     updater = Updater("TOKEN")
 
